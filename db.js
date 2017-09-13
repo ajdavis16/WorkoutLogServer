@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize(process.env.DATABASE_URL ||
-	'postgres://postgres:EDBkiller123@localhost:5432/workoutlog',{
+var sequelize = new Sequelize('workoutlog', 'postgres', 'EDBkiller123', {
+	host: 'localhost',
 	dialect: 'postgres'
 });
 
@@ -15,5 +15,7 @@ sequelize.authenticate().then(
 
 
 var User = sequelize.import('./models/user');
+var Log = sequelize.import('./models/log');
+var Definition = sequelize.import('./models/definition');
 
 module.exports = sequelize;
